@@ -6,10 +6,9 @@ class Hamming
   def self.compute(dna, other)
     throw ArgumentError if (dna.length != other.length)
 
-    sum = 0
-    dna.each_char.with_index { |c, i| 
+    dna.each_char.with_index.reduce(0) { |sum, (c, i)| 
       sum += 1 if c != other[i]
+      sum
     }
-    sum
   end
 end
