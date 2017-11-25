@@ -5,10 +5,10 @@ module BookKeeping
 end
 
 class Hamming
-  def self.compute(dna, other)
-    throw ArgumentError if (dna.length != other.length)
+  def self.compute(first_strand, second_strand)
+    throw ArgumentError unless first_strand.length == second_strand.length
 
-    dna.each_char.with_index.reject { |c, i| c == other[i] }.length
+    first_strand.each_char.with_index.reject { |c, i| c == second_strand[i] }.length
   end
 end
 
