@@ -1,5 +1,3 @@
-require 'pry'
-
 class Complement
   TRANSCRIPTION = {
     'G' => 'C',
@@ -18,5 +16,3 @@ end
 module BookKeeping
   VERSION = 4
 end
-
-# binding.pry
