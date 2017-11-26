@@ -1,18 +1,18 @@
 class Squares
-  def initialize side
-    @side = side
-  end
-
-  def square_of_sum
-    (1..@side).sum ** 2
-  end
-
-  def sum_of_squares
-    (1..@side).map { |i| i**2 }.sum
+  def initialize number
+    @number = number
   end
 
   def difference
     square_of_sum - sum_of_squares
+  end
+
+  def square_of_sum
+    (1..@number).sum ** 2
+  end
+
+  def sum_of_squares
+    (1..@number).sum { |i| i ** 2 }
   end
 end
 
