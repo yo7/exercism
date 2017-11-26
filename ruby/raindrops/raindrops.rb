@@ -12,11 +12,11 @@ class Raindrops
 
   private
     def self.stringify(factors)
-      FACTOR_STRINGS.each_with_object('') { |(k, v), s| s << v if factors.include?(k) }
+      factors.map { |factor| FACTOR_STRINGS[factor] }.join
     end
 
     def self.factors(n)
-      (1..n).each_with_object([]) { |i, a| a << i if (n % i).zero? }
+      (1..n).select { |i| (n % i).zero? }
     end
 end
 
