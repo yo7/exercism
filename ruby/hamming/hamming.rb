@@ -1,5 +1,3 @@
-require 'pry'
-
 module BookKeeping
   VERSION = 3
 end
@@ -11,5 +9,3 @@ class Hamming
     first_strand.each_char.with_index.count { |c, i| c != second_strand[i] }
   end
 end
-
-# binding.pry
