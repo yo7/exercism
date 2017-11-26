@@ -1,5 +1,3 @@
-require 'pry'
-
 class Gigasecond
   GIGASECOND = 10**9
 
