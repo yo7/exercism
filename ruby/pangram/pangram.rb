@@ -2,7 +2,8 @@ require 'pry'
 
 class Pangram
   def self.pangram?(phrase)
-    ('a'..'z').all? { |c| phrase.downcase.include?(c) }
+    target = phrase.downcase
+    ('a'..'z').all? { |c| target.include?(c) }
   end
 end
 
