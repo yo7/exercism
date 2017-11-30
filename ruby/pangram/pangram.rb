@@ -1,5 +1,4 @@
 require 'set'
-require 'pry'
 
 class Pangram
   ALPHABET_COUNT = 26

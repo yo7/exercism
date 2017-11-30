@@ -1,14 +1,13 @@
 class Pangram {
-    readonly alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-
-    phrase: string
-    constructor(phrase: string) {
-        this.phrase = phrase
+    private readonly alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    private readonly sentence: string
+    constructor(sentence: string) {
+        this.sentence = sentence
     }
 
     isPangram(): boolean {
-        const phrase = this.phrase.toLowerCase().split('')
-        return this.alphabet.every((c) => phrase.includes(c))
+        const s = this.sentence.toLowerCase().split('')
+        return this.alphabet.every((c) => s.includes(c))
     }
 }
 
