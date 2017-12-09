@@ -1,5 +1,4 @@
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 private object OrbitalPeriod {
     val earth = 1.0
