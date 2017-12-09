@@ -7,38 +7,36 @@ type saying string
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-func (s saying) isShout() bool {
-	ss := string(s)
-	if !strings.ContainsAny(alphabet, strings.ToLower(ss)) {
+// Hey returns respond to given remark
+func Hey(remark string) string {
+	switch {
+	case isQuestion(remark) && isShout(remark):
+		return "Calm down, I know what I'm doing!"
+	case isQuestion(remark):
+		return "Sure."
+	case isShout(remark):
+		return "Whoa, chill out!"
+	case isSilent(remark):
+		return "Fine. Be that way!"
+	default:
+		return "Whatever."
+	}
+}
+
+func isQuestion(s string) bool {
+	return strings.HasSuffix(strings.TrimSpace(s), "?")
+}
+
+func isShout(s string) bool {
+	if !strings.ContainsAny(alphabet, strings.ToLower(s)) {
 		return false
 	}
-	if strings.ToUpper(ss) != ss {
+	if strings.ToUpper(s) != s {
 		return false
 	}
 	return true
 }
 
-func (s saying) isQuestion() bool {
-	ss := string(s)
-	return strings.HasSuffix(strings.TrimSpace(ss), "?")
-}
-
-func (s saying) isSilent() bool {
+func isSilent(s string) bool {
 	return strings.TrimSpace(string(s)) == ""
-}
-
-// Hey returns respond to given remark
-func Hey(remark string) string {
-	s := saying(remark)
-	if s.isQuestion() && s.isShout() {
-		return "Calm down, I know what I'm doing!"
-	} else if s.isQuestion() {
-		return "Sure."
-	} else if s.isShout() {
-		return "Whoa, chill out!"
-	} else if s.isSilent() {
-		return "Fine. Be that way!"
-	} else {
-		return "Whatever."
-	}
 }
