@@ -1,4 +1,4 @@
-// Package bob implements bob's responds
+// Package bob implements bob's responses
 package bob
 
 import "strings"
@@ -7,7 +7,7 @@ type saying string
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-// Hey returns respond to given remark
+// Hey returns response to given remark
 func Hey(remark string) string {
 	switch {
 	case isQuestion(remark) && isShout(remark):
@@ -28,15 +28,12 @@ func isQuestion(s string) bool {
 }
 
 func isShout(s string) bool {
-	if !strings.ContainsAny(alphabet, strings.ToLower(s)) {
-		return false
+	if strings.ContainsAny(alphabet, strings.ToLower(s)) && strings.ToUpper(s) == s {
+		return true
 	}
-	if strings.ToUpper(s) != s {
-		return false
-	}
-	return true
+	return false
 }
 
 func isSilent(s string) bool {
-	return strings.TrimSpace(string(s)) == ""
+	return strings.TrimSpace(s) == ""
 }
