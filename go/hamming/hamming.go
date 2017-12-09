@@ -4,14 +4,14 @@ package hamming
 import "errors"
 
 // Distance returns difference of two DNA strands
-func Distance(strands, other string) (int, error) {
-	if len(strands) != len(other) {
-		return - 1, errors.New("two strands must have same size DNA")
+func Distance(s1, s2 string) (int, error) {
+	if len(s1) != len(s2) {
+		return -1, errors.New("two strands must have same size DNA")
 	}
 
 	count := 0
-	for i, c := range strands {
-		if string(c) != string(other[i]) {
+	for i, c := range s1 {
+		if byte(c) != s2[i] {
 			count += 1
 		}
 	}
