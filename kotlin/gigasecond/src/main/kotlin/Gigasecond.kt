@@ -1,16 +1,9 @@
-import java.time.*
+import java.time.LocalDate
+import java.time.LocalDateTime
 
-class Gigasecond {
+class Gigasecond(private val from: LocalDateTime) {
+    constructor(from: LocalDate): this(from.atStartOfDay())
+
     private val gigasecond = Math.pow(10.0, 9.0).toLong()
-    private val zoneId = ZoneId.systemDefault()
-
-    lateinit var date: LocalDateTime
-
-    constructor(fromDate: LocalDate) {
-        this.date = LocalDateTime.ofInstant(Instant.ofEpochSecond(fromDate.atStartOfDay(zoneId).toEpochSecond() + gigasecond), zoneId)
-    }
-
-    constructor(fromDateTime: LocalDateTime) {
-        this.date = LocalDateTime.ofInstant(Instant.ofEpochSecond(fromDateTime.atZone(zoneId).toEpochSecond() + gigasecond), zoneId)
-    }
+    val date: LocalDateTime = from.plusSeconds(gigasecond)
 }
