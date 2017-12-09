@@ -25,5 +25,5 @@ class SpaceAge(private val seconds: Long) {
     private fun calculateYear(by: Double) = (seconds.toEarthYears() / by).round()
 }
 
-private fun Long.toEarthYears() = this / 60 / 60 / 24 / 365.25
-private fun Double.round() = BigDecimal(this).setScale(2, RoundingMode.HALF_DOWN).toDouble()
+private fun Long.toEarthYears() = this / (60 * 60 * 24 * 365.25)
+private fun Double.round() = BigDecimal(this).setScale(2, BigDecimal.ROUND_HALF_UP).toDouble()
