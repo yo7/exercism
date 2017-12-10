@@ -28,10 +28,7 @@ func isQuestion(s string) bool {
 }
 
 func isShout(s string) bool {
-	if strings.ContainsAny(alphabet, strings.ToLower(s)) && strings.ToUpper(s) == s {
-		return true
-	}
-	return false
+	return strings.ContainsAny(alphabet, strings.ToLower(s)) && strings.ToUpper(s) == s
 }
 
 func isSilent(s string) bool {
