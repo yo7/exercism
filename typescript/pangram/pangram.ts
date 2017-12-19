@@ -1,3 +1,4 @@
+
 class Pangram {
     private readonly alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
     private readonly sentence: string
