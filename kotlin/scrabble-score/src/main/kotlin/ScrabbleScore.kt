@@ -1,25 +1,16 @@
-val scores = mapOf(
-        "AEIOULNRST" to 1,
-        "DG" to 2,
-        "BCMP" to 3,
-        "FHVWY" to 4,
-        "K" to 5,
-        "JX" to 8,
-        "QZ" to 10
-)
+fun scoreOf(letter: Char) = when (letter) {
+    'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T' -> 1
+    'D', 'G' -> 2
+    'B', 'C', 'M', 'P' -> 3
+    'F', 'H', 'V', 'W', 'Y' -> 4
+    'K' -> 5
+    'J', 'X' -> 8
+    'Q', 'Z' -> 10
+    else -> throw IllegalArgumentException("Input must be alphabetical character")
+}
 
 class ScrabbleScore {
     companion object {
-        fun scoreWord(word: String): Int {
-            var sum = 0
-            word.forEach { c ->
-                scores.forEach {
-                    if (it.key.contains(c, true)) {
-                        sum += it.value
-                    }
-                }
-            }
-            return sum
-        }
+        fun scoreWord(word: String): Int = word.sumBy { scoreOf(it.toUpperCase()) }
     }
 }
