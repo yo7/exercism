@@ -1,5 +1,3 @@
-import kotlin.math.pow
-
 class Squares(val value: Int) {
     fun squareOfSum() = (1..value).sum().square()
 
@@ -8,5 +6,5 @@ class Squares(val value: Int) {
     fun difference() = squareOfSum() - sumOfSquares()
 }
 
-private fun Int.square() = toDouble().pow(2).toInt()
+private fun Int.square() = this * this
 
