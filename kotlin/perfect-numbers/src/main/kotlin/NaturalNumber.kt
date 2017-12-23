@@ -3,17 +3,13 @@ enum class Classification {
 }
 
 fun classify(naturalNumber: Int): Classification {
-    if (naturalNumber <= 0) {
-        throw RuntimeException("Natural number must be positive number")
-    }
+    require(naturalNumber > 0) { "Natural number must be positive number: $naturalNumber" }
 
-    val sumOfFactors = naturalNumber.factors().sum()
+    val aliquotSum = (1 until naturalNumber).filter { naturalNumber % it == 0 }.sum()
     return when {
-        naturalNumber == sumOfFactors -> Classification.PERFECT
-        naturalNumber < sumOfFactors  -> Classification.ABUNDANT
-        naturalNumber > sumOfFactors  -> Classification.DEFICIENT
-        else -> throw RuntimeException()
+        naturalNumber == aliquotSum -> Classification.PERFECT
+        naturalNumber < aliquotSum  -> Classification.ABUNDANT
+        else -> Classification.DEFICIENT
     }
 }
 
-fun Int.factors() = (1 until this).filter { this % it == 0 }
