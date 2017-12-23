@@ -1,21 +1,13 @@
+val rainSound = mapOf(
+        3 to "Pling",
+        5 to "Plang",
+        7 to "Plong"
+)
+
 object Raindrops {
-    fun convert(number: Int): String {
-        var sound = ""
-        val factors = number.factors()
-        if (factors.contains(3)) {
-            sound +=  "Pling"
-        }
-        if (factors.contains(5)) {
-            sound += "Plang"
-        }
-        if (factors.contains(7)) {
-            sound += "Plong"
-        }
-        if (sound.isBlank()) {
-            sound += number.toString()
-        }
-        return sound
-    }
+    fun convert(number: Int): String =
+            number.factors().joinToString("") { rainSound.getOrDefault(it, "") }.or(number.toString())
 }
 
-private fun Int.factors(): List<Int> = (1..this).filter { this % it == 0 }
+private fun Int.factors() = (1..this).filter { this % it == 0 }
+private fun String.or(other: String) = if (this.isNotBlank()) this else other
