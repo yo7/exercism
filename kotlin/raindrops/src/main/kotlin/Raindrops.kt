@@ -6,8 +6,8 @@ val rainSound = mapOf(
 
 object Raindrops {
     fun convert(number: Int): String =
-            number.factors().joinToString("") { rainSound.getOrDefault(it, "") }.or(number.toString())
+            rainSound.filterKeys(number::hasFactor).values.joinToString("").or(number.toString())
 }
 
-private fun Int.factors() = (1..this).filter { this % it == 0 }
+private fun Int.hasFactor(number: Int) = this % number == 0
 private fun String.or(other: String) = if (this.isNotBlank()) this else other
