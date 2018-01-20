@@ -1,14 +1,11 @@
 object Luhn {
     fun isValid(input: String): Boolean {
-        val reversedNumbers: List<Int>
-
-        try {
-            reversedNumbers = input.trimSpace().map { it.toString().toInt() }.reversed()
-        } catch (e: NumberFormatException) {
+        val s = input.trimSpace()
+        if (!s.isAllDigit()) {
             return false
         }
 
-        val list = reversedNumbers.mapIndexed { index, num ->
+        val list = s.map { it.toString().toInt() }.reversed().mapIndexed { index, num ->
             if (index % 2 != 0) {
                 val doubled = num * 2
                 if (doubled < 10) doubled else doubled.sumOfDigits()
@@ -21,6 +18,7 @@ object Luhn {
     }
 }
 
-private fun String.trimSpace() = this.replace("\\s+".toRegex(), "")
-private fun Int.sumOfDigits() = this.toString().map { it.toString().toInt() }.sum()
+private fun String.trimSpace() = this.filterNot { it == ' ' }
 
+private fun String.isAllDigit() = this.all { it.isDigit() }
+private fun Int.sumOfDigits() = this.toString().map { it.toString().toInt() }.sum()
