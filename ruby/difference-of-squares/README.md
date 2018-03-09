@@ -12,7 +12,7 @@ Hence the difference between the square of the sum of the first
 ten natural numbers and the sum of the squares of the first ten
 natural numbers is 3025 - 385 = 2640.
 
-* * * *
+---
 
 For installation and learning resources, refer to the
 [exercism help page](http://exercism.io/languages/ruby).
@@ -36,10 +36,10 @@ To include color from the command line:
 
     ruby -r minitest/pride hello_world_test.rb
 
-
 ## Source
 
 Problem 6 at Project Euler [http://projecteuler.net/problem=6](http://projecteuler.net/problem=6)
 
 ## Submitting Incomplete Solutions
+
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
