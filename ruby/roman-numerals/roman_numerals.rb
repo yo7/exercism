@@ -17,14 +17,12 @@ class Integer
   }
 
   def to_roman
-    result = ''
     number = self
 
-    MAPPING.keys.each do |i|
+    MAPPING.keys.each_with_object('') do |i, text|
       q, r = number.divmod(i)
-      result << MAPPING[i] * q
+      text << MAPPING[i] * q
       number = r
     end
-    return result
   end
 end
